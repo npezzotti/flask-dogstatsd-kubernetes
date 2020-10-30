@@ -4,29 +4,29 @@ metadata:
   name: flask-dogstatsd
   labels: 
     app: flask-dogstatsd
-  spec:
-    selector:
-      matchLabels: 
+spec:
+  selector:
+    matchLabels: 
+      app: flask-dogstatsd
+  replicas: 2
+  strategy: 
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
         app: flask-dogstatsd
-    replicas: 2
-    strategy: 
-      type: RollingUpdate
-    template:
-      metadata:
-        labels:
-          app: flask-dogstatsd
-      spec:
-        containers:
-        - name: flask-dogstatsd
-          image: flask-dogstatsd
-          imagePullPolicy: Never
-          ports: 
+    spec:
+      containers:
+      - name: flask-dogstatsd
+        image: flask-dogstatsd
+        imagePullPolicy: Never
+        ports: 
           - containerPort: 5000
-          env: 
-            - name: DD_AGENT_HOST
-              valueFrom:
-                 fieldRef:
-                   fieldPath: status.hostIP
+        env: 
+          - name: DD_AGENT_HOST
+            valueFrom:
+              fieldRef:
+                fieldPath: status.hostIP
 ---
 apiVersion: v1
 kind: Service
