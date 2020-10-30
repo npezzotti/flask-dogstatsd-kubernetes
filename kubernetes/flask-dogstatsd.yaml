@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-dogstatsd
+  labels: 
+    app: flask-dogstatsd
+  spec:
+    selector:
+      matchLabels: 
+        app: flask-dogstatsd
+    replicas: 2
+    strategy: 
+      type: RollingUpdate
+    template:
+      metadata:
+        labels:
+          app: flask-dogstatsd
+      spec:
+        containers:
+        - name: flask-dogstatsd
+          image: flask-dogstatsd
+          imagePullPolicy: Never
+          ports: 
+          - containerPort: 5000
+          env: 
+            - name: DD_AGENT_HOST
+              valueFrom:
+                 fieldRef:
+                   fieldPath: status.hostIP
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: flask-dogstatsd-service
+  labels: 
+    app: flask-dogstatsd
+spec:
+  ports:
+  - port: 5000
+    protocol: TCP
+    name: flask-app-port
+  selector: 
+    app: flask-dogstatsd
+  type: LoadBalancer 
