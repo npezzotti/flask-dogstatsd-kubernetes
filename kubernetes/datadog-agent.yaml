@@ -188,48 +188,6 @@ spec:
             tcpSocket:
               port: 8126
             timeoutSeconds: 5
-        - name: process-agent
-          image: "datadog/agent:7.23.0"
-          imagePullPolicy: IfNotPresent
-          command: ["process-agent", "-config=/etc/datadog-agent/datadog.yaml"]
-          resources: {}
-          env:
-            - name: DD_API_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: "datadog-agent"
-                  key: api-key
-            - name: DD_KUBERNETES_KUBELET_HOST
-              valueFrom:
-                fieldRef:
-                  fieldPath: status.hostIP
-            - name: KUBERNETES
-              value: "yes"
-            - name: DD_AC_EXCLUDE
-              value: "name:datadog-agent"
-            - name: DOCKER_HOST
-              value: unix:///host/var/run/docker.sock
-            - name: DD_LOG_LEVEL
-              value: "INFO"
-            - name: DD_ORCHESTRATOR_EXPLORER_ENABLED
-              value: "false"
-          volumeMounts:
-            - name: config
-              mountPath: /etc/datadog-agent
-            - name: runtimesocketdir
-              mountPath: /host/var/run
-              mountPropagation: None
-              readOnly: true
-            - name: cgroups
-              mountPath: /host/sys/fs/cgroup
-              mountPropagation: None
-              readOnly: true
-            - name: passwd
-              mountPath: /etc/passwd
-            - name: procdir
-              mountPath: /host/proc
-              mountPropagation: None
-              readOnly: true
       initContainers:
         - name: init-volume
           image: "datadog/agent:7.23.0"
