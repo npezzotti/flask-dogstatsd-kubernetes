@@ -4,6 +4,8 @@ metadata:
   name: flask-dogstatsd
   labels: 
     app: flask-dogstatsd
+  annotations:
+    ad.datadoghq.com/flask-dogstatsd.logs: '[{"source": "python", "service": "flask-dogstatsd"}]'
 spec:
   selector:
     matchLabels: 
