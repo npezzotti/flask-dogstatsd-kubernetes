@@ -22,7 +22,8 @@ spec:
             [
               {
                 "name": "flask",
-                "search_string": "/usr/local/bin/python /usr/local/bin/flask run"
+                "search_string": ["/usr/local/bin/python", "/usr/local/bin/flask", "run"],
+		"exact_match": "false"
               }
             ]
           ad.datadoghq.com/flask-dogstatsd.logs: '[{"source": "python", "service": "flask-dogstatsd"}]'
