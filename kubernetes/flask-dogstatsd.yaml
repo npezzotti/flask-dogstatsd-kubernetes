@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: flask-dogstatsd
-        image: flask-dogstatsd
+        image: gcr.io/splendid-sunset-293519/flask-dogstatsd
         imagePullPolicy: IfNotPresent
         ports: 
           - containerPort: 5000
