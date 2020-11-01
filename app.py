@@ -1,9 +1,10 @@
+import os
 import random
 
 from datadog import initialize, statsd
+
 options = {
-    'statsd_host':'127.0.0.1',
-    'statsd_port':8125
+    'statsd_host':os.environ.get('DD_AGENT_HOST')
 }
 
 initialize(**options)
