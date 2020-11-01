@@ -253,9 +253,6 @@ spec:
         - name: s6-run
           emptyDir: {}
         - hostPath:
-            path: /etc/passwd
-          name: passwd
-        - hostPath:
             path: "/var/lib/datadog-agent/logs"
           name: pointerdir
         - hostPath:
