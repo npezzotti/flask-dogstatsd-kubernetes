@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
       - name: flask-dogstatsd
-        image: gcr.io/<GCP_PROJECT_NAME>/flask-dogstatsd
+        image: gcr.io/<GCP_PROJECT_NAME>/flask-dogstatsd:latest
         imagePullPolicy: IfNotPresent
         ports: 
           - containerPort: 5000
