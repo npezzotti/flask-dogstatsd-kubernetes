@@ -68,7 +68,7 @@ spec:
             - name: KUBERNETES
               value: "yes"
             - name: DD_CONTAINER_EXCLUDE
-              value: "name:datadog-agent name:trace-agent"
+              value: "name:datadog-agent"
             - name: DOCKER_HOST
               value: unix:///host/var/run/docker.sock
             - name: DD_LOG_LEVEL
