@@ -71,10 +71,6 @@ spec:
             - name: DD_HEALTH_PORT
               value: "5555"
           volumeMounts:
-            - name: installinfo
-              subPath: install_info
-              mountPath: /etc/datadog-agent/install_info
-              readOnly: true
             - name: config
               mountPath: /etc/datadog-agent
             - name: runtimesocketdir
@@ -215,9 +211,6 @@ spec:
               value: "true"
           resources: {}
       volumes:
-        - name: installinfo
-          configMap:
-            name: datadog-agent-installinfo
         - name: config
           emptyDir: {}
         - hostPath:
