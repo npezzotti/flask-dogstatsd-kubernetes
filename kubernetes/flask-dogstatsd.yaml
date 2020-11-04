@@ -15,18 +15,18 @@ spec:
     metadata:
       labels:
         app: flask-dogstatsd
-        annotations:
-          ad.datadoghq.com/flask-dogstatsd.check_names: '["process"]'
-          ad.datadoghq.com/flask-dogstatsd.init_configs: '[{}]'
-          ad.datadoghq.com/flask-dogstatsd.instances: |
-            [
-              {
-                "name": "flask",
-                "search_string": ["/usr/local/bin/python", "/usr/local/bin/flask", "run"],
-                "exact_match": "false"
-              }
-            ]
-          ad.datadoghq.com/flask-dogstatsd.logs: '[{"source": "python", "service": "flask-dogstatsd"}]'
+      annotations:
+        ad.datadoghq.com/flask-dogstatsd.check_names: '["process"]'
+        ad.datadoghq.com/flask-dogstatsd.init_configs: '[{}]'
+        ad.datadoghq.com/flask-dogstatsd.instances: |
+          [
+            {
+              "name": "flask",
+              "search_string": ["/usr/local/bin/python", "/usr/local/bin/flask", "run"],
+              "exact_match": "false"
+            }
+          ]
+        ad.datadoghq.com/flask-dogstatsd.logs: '[{"source": "python", "service": "flask-dogstatsd"}]'
     spec:
       containers:
       - name: flask-dogstatsd
