@@ -34,7 +34,9 @@ spec:
         imagePullPolicy: IfNotPresent
         ports: 
           - containerPort: 5000
-        env: 
+        env:
+          - name: FLASK_ENV
+            value: "production" 
           - name: DD_AGENT_HOST
             valueFrom:
               fieldRef:
