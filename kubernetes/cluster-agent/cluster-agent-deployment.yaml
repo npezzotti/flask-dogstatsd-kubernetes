@@ -43,7 +43,7 @@ spec:
         - containerPort: 5005
           name: agentport
           protocol: TCP
-        - containerPort: 8443
+        - containerPort: 443
           name: metricsapi
           protocol: TCP
         env:
