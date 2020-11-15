@@ -5,7 +5,7 @@ metadata:
   labels: {}
 type: Opaque
 data:
-  api-key: BASE64_ENCODED_API_KEY
+  api-key: ZWFiMmRlOWI3N2Y5ODA4ZjNkMGZjYzBjMDA5ZTcwM2EK
 ---
 apiVersion: apps/v1
 kind: DaemonSet
@@ -26,7 +26,7 @@ spec:
       containers:
         - name: agent
           image: "datadog/agent:7.23.0"
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           command: ["agent", "run"]
           resources: {}
           ports:
@@ -34,6 +34,10 @@ spec:
               hostPort: 8125
               name: dogstatsdport
               protocol: UDP
+            - containerPort: 8126
+              hostPort: 8126
+              name: traceport
+              protocol: TCP
           env:
             - name: DD_API_KEY
               valueFrom:
@@ -61,7 +65,9 @@ spec:
             - name: DD_COLLECT_KUBERNETES_EVENTS
               value: "true"
             - name: DD_APM_ENABLED
-              value: "false"
+              value: "true"
+            - name: DD_APM_NON_LOCAL_TRAFFIC
+              value: "true"
             - name: DD_LOGS_ENABLED
               value: "true"
             - name: DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL
@@ -70,6 +76,13 @@ spec:
               value: "true"
             - name: DD_HEALTH_PORT
               value: "5555"
+            - name: DD_CLUSTER_AGENT_ENABLED
+              value: "true"
+            - name: DD_CLUSTER_AGENT_AUTH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: datadog-cluster-agent
+                  key: token
           volumeMounts:
             - name: config
               mountPath: /etc/datadog-agent
@@ -116,57 +129,10 @@ spec:
             periodSeconds: 15
             successThreshold: 1
             timeoutSeconds: 5
-        - name: trace-agent
-          image: "datadog/agent:7.23.0"
-          imagePullPolicy: IfNotPresent
-          command: ["trace-agent", "-config=/etc/datadog-agent/datadog.yaml"]
-          resources: {}
-          ports:
-            - containerPort: 8126
-              hostPort: 8126
-              name: traceport
-              protocol: TCP
-          env:
-            - name: DD_API_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: "datadog-agent"
-                  key: api-key
-            - name: DD_KUBERNETES_KUBELET_HOST
-              valueFrom:
-                fieldRef:
-                  fieldPath: status.hostIP
-            - name: KUBERNETES
-              value: "yes"
-            - name: DD_CONTAINER_EXCLUDE
-              value: "image:datadog/agent"
-            - name: DOCKER_HOST
-              value: unix:///host/var/run/docker.sock
-            - name: DD_LOG_LEVEL
-              value: "INFO"
-            - name: DD_APM_ENABLED
-              value: "true"
-            - name: DD_APM_NON_LOCAL_TRAFFIC
-              value: "true"
-            - name: DD_APM_RECEIVER_PORT
-              value: "8126"
-          volumeMounts:
-            - name: config
-              mountPath: /etc/datadog-agent
-            - name: runtimesocketdir
-              mountPath: /host/var/run
-              mountPropagation: None
-              readOnly: true
-          livenessProbe:
-            initialDelaySeconds: 15
-            periodSeconds: 15
-            tcpSocket:
-              port: 8126
-            timeoutSeconds: 5
       initContainers:
         - name: init-volume
           image: "datadog/agent:7.23.0"
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           command: ["bash", "-c"]
           args:
             - cp -r /etc/datadog-agent /opt
@@ -176,7 +142,7 @@ spec:
           resources: {}
         - name: init-config
           image: "datadog/agent:7.23.0"
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           command: ["bash", "-c"]
           args:
             - for script in $(find /etc/cont-init.d/ -type f -name '*.sh' | sort) ; do bash $script ; done
