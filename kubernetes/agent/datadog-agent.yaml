@@ -143,7 +143,7 @@ spec:
             - name: DD_API_KEY
               valueFrom:
                 secretKeyRef:
-                  name: "datadog-agent"
+                  name: "datadog-api-key"
                   key: api-key
             - name: DD_KUBERNETES_KUBELET_HOST
               valueFrom:
