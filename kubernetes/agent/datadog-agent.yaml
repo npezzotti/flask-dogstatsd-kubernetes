@@ -1,12 +1,3 @@
-apiVersion: v1
-kind: Secret
-metadata:
-  name: datadog-agent
-  labels: {}
-type: Opaque
-data:
-  api-key: ZWFiMmRlOWI3N2Y5ODA4ZjNkMGZjYzBjMDA5ZTcwM2EK
----
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
