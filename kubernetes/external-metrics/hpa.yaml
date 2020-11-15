@@ -13,7 +13,4 @@ spec:
   - type: External
     external:
       metricName: trace.flask.request.hits
-      metricSelector:
-        matchLabels:
-            kube_container_name: flask-dogstatsd
       targetAverageValue: 6
