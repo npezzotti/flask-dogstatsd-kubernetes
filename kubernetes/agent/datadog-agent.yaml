@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: datadog-agent
-  labels: {}
 spec:
   selector:
     matchLabels:
@@ -179,8 +178,6 @@ spec:
         - hostPath:
             path: /var/lib/docker/containers
           name: logdockercontainerpath
-      tolerations:
-      affinity: {}
       serviceAccountName: "datadog-agent"
       nodeSelector:
         kubernetes.io/os: linux
