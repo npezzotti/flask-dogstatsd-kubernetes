@@ -1,7 +1,7 @@
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: flask-requests
+  name: flask-dogstatsd-metric
 spec:
   minReplicas: 2
   maxReplicas: 5
@@ -12,5 +12,5 @@ spec:
   metrics:
   - type: External
     external:
-      metricName: trace.flask.request.hits
+      metricName: hello.world
       targetAverageValue: 6

@@ -14,5 +14,5 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    statsd.gauge('hello.world', random.randint(0, 9), tags=["app:flask-hello-world"])
+    statsd.increment('hello.world', tags=["app:flask-hello-world"])
     return 'Hello, World!'
