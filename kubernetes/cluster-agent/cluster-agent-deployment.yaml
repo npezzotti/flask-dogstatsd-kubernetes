@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: datadog-cluster-agent
-  labels: {}
 spec:
   replicas: 1
   strategy:
@@ -37,7 +36,7 @@ spec:
       containers:
       - name: cluster-agent
         image: "datadog/cluster-agent:1.9.0"
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         resources: {}
         ports:
         - containerPort: 5005
