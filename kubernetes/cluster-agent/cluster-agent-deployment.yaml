@@ -63,7 +63,7 @@ spec:
         - name: DD_EXTERNAL_METRICS_PROVIDER_ENABLED
           value: "true"
         - name: DD_EXTERNAL_METRICS_PROVIDER_PORT
-          value: "8443"
+          value: "443"
         - name: DD_EXTERNAL_METRICS_PROVIDER_WPA_CONTROLLER
           value: "false"
         - name: DD_EXTERNAL_METRICS_PROVIDER_USE_DATADOGMETRIC_CRD
