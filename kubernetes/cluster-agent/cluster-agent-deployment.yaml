@@ -88,16 +88,16 @@ spec:
           value: "false"
         - name: DD_COMPLIANCE_CONFIG_ENABLED
           value: "false"
-	- name: DD_CLUSTER_CHECKS_ENABLED
-	  value: "true"
-	- name: DD_CLUSTER_NAME
-	  value: "flask-dogstatsd"
-	- name: DD_LEADER_LEASE_DURATION
-	  value: 15
-	- name: DD_EXTRA_CONFIG_PROVIDERS
-	  value: "kube_services"
-	- name: DD_EXTRA_LISTENERS
-	  value: "kube_services"
+        - name: DD_CLUSTER_CHECKS_ENABLED
+          value: "true"
+        - name: DD_CLUSTER_NAME
+          value: "flask-dogstatsd"
+        - name: DD_LEADER_LEASE_DURATION
+          value: "15"
+        - name: DD_EXTRA_CONFIG_PROVIDERS
+          value: "kube_services"
+        - name: DD_EXTRA_LISTENERS
+          value: "kube_services"
         livenessProbe:
           failureThreshold: 6
           httpGet:
