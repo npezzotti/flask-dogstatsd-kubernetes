@@ -64,6 +64,8 @@ spec:
                 secretKeyRef:
                   name: datadog-cluster-agent
                   key: token
+	    - name: DD_EXTRA_CONFIG_PROVIDERS
+	      value: "clusterchecks"
           volumeMounts:
             - name: config
               mountPath: /etc/datadog-agent
