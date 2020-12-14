@@ -60,7 +60,7 @@ metadata:
       [
         {
           "name": "flask-dogstatsd-service",
-          "url": "http://%%host%%",
+          "url": "http://%%host%%:5000",
           "min_collection_interval": 60
         }
       ]
