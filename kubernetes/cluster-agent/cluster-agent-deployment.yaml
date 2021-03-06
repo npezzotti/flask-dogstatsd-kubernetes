@@ -102,8 +102,6 @@ spec:
           value: "true"
         - name: DD_ADMISSION_CONTROLLER_SERVICE_NAME
           value: "datadog-cluster-agent-admission-controller"
-        - name: DD_ADMISSION_CONTROLLER_MUTATE_UNLABELLED
-          value: "true"
         livenessProbe:
           failureThreshold: 6
           httpGet:
