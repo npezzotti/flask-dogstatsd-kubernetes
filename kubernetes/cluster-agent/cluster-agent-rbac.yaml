@@ -74,6 +74,20 @@ rules:
   - "/healthz"
   verbs:
   - get
+- apiGroups:
+  - admissionregistration.k8s.io
+  resources:
+  - mutatingwebhookconfigurations
+  verbs: ["get", "list", "watch", "update", "create"]
+- apiGroups: [""]
+  resources: ["secrets"]
+  verbs: ["get", "list", "watch", "update", "create"]
+- apiGroups: ["batch"]
+  resources: ["jobs", "cronjobs"]
+  verbs: ["get"]
+- apiGroups: ["apps"]
+  resources: ["statefulsets", "replicasets", "deployments"]
+  verbs: ["get"]
 ---
 apiVersion: "rbac.authorization.k8s.io/v1"
 kind: ClusterRoleBinding
