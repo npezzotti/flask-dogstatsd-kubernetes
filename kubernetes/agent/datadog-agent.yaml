@@ -43,8 +43,6 @@ spec:
               value: "image:datadog/agent"
             - name: DOCKER_HOST
               value: unix:///host/var/run/docker.sock
-            - name: DD_LOG_LEVEL
-              value: "INFO"
             - name: DD_DOGSTATSD_NON_LOCAL_TRAFFIC
               value: "true"
             - name: DD_LOGS_ENABLED
