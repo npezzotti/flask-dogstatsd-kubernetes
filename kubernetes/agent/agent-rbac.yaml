@@ -54,5 +54,5 @@ roleRef:
   name: datadog
 subjects:
 - kind: ServiceAccount
-  name: datadog
+  name: datadog-agent
   namespace: default

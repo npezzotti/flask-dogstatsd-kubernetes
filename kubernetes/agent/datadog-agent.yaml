@@ -62,6 +62,8 @@ spec:
                   key: token
             - name: DD_EXTRA_CONFIG_PROVIDERS
               value: "clusterchecks"
+            - name: DD_KUBELET_TLS_VERIFY
+              value: "false"
           volumeMounts:
             - name: config
               mountPath: /etc/datadog-agent
