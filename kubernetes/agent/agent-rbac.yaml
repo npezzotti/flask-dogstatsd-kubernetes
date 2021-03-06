@@ -12,7 +12,7 @@ rules:
   - "/metrics"
   verbs:
   - get
-- apiGroups: # Kubelet connectivity
+- apiGroups:
   - ""
   resources:
   - nodes/metrics
@@ -21,7 +21,7 @@ rules:
   - nodes/stats
   verbs:
   - get
-- apiGroups: # leader election check
+- apiGroups:
   - ""
   resources:
   - endpoints
