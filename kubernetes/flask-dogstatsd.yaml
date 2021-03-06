@@ -15,6 +15,7 @@ spec:
     metadata:
       labels:
         app: flask-dogstatsd
+        admission.datadoghq.com/enabled: "true"
       annotations:
         ad.datadoghq.com/flask-dogstatsd.check_names: '["process"]'
         ad.datadoghq.com/flask-dogstatsd.init_configs: '[{}]'
@@ -36,11 +37,7 @@ spec:
           - containerPort: 5000
         env:
           - name: FLASK_ENV
-            value: "production" 
-          - name: DD_AGENT_HOST
-            valueFrom:
-              fieldRef:
-                fieldPath: status.hostIP
+            value: "production"
       - name: curl
         image: curlimages/curl
         imagePullPolicy: Always
