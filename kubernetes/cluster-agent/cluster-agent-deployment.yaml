@@ -98,6 +98,12 @@ spec:
           value: "kube_services"
         - name: DD_EXTRA_LISTENERS
           value: "kube_services"
+        - name: DD_ADMISSION_CONTROLLER_ENABLED
+          value: "true"
+        - name: DD_ADMISSION_CONTROLLER_SERVICE_NAME
+          value: "datadog-cluster-agent-admission-controller"
+        - name: DD_ADMISSION_CONTROLLER_MUTATE_UNLABELLED
+          value: "true"
         livenessProbe:
           failureThreshold: 6
           httpGet:
