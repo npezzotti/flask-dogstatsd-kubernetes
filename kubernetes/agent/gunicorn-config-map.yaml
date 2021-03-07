@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gunicorn-config-map
+data:
+  gunicorn-config: |-
+    ad_identifiers:
+      - flask-dogstatsd
+    init_config:
+    instances:
+      - proc_name: run:app

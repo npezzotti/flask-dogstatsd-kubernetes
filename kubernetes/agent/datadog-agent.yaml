@@ -90,6 +90,8 @@ spec:
               mountPath: /var/lib/docker/containers
               mountPropagation: None
               readOnly: true
+            - name: gunicorn-config-map
+              mountPath: /conf.d/gunicorn.d
           livenessProbe:
             failureThreshold: 6
             httpGet:
@@ -178,6 +180,12 @@ spec:
         - hostPath:
             path: /var/lib/docker/containers
           name: logdockercontainerpath
+        - name: gunicorn-config-map
+          configMap:
+            name: gunicorn-config-map
+            items: 
+             - key: gunicorn-config
+               path: gunicorn.yaml
       serviceAccountName: "datadog-agent"
       nodeSelector:
         kubernetes.io/os: linux

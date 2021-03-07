@@ -13,6 +13,7 @@ Jinja2==2.11.2
 MarkupSafe==1.1.1
 protobuf==3.13.0
 requests==2.24.0
+setproctitle==1.2.2
 six==1.15.0
 sortedcontainers==2.2.2
 tenacity==6.2.0
