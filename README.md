@@ -7,8 +7,9 @@
 
 ## Deployment steps
 
-1. From the root directory, run `docker build -t flask-dogstatsd:1.0.0 .` to build the application image
-2. Install the DatadogMetric CRD in your cluster:
+1. In /kubernetes/secrets/secrets.yaml, replace the placeholders with your base64 encoded credentials, i.e `echo -n <API_KEY> | base64`
+2. From the root directory, run `docker build -t flask-dogstatsd:1.0.0 .` to build the application image
+3. Install the DatadogMetric CRD in your cluster:
 `kubectl apply -f "https://raw.githubusercontent.com/DataDog/helm-charts/master/crds/datadoghq.com_datadogmetrics.yaml"`
 2. cd kubernetes 
 3. `kubectl apply -f secrets`
