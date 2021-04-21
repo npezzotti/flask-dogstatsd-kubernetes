@@ -16,4 +16,4 @@
 6. `kubectl apply -f external-metrics`
 7. `kubectl apply -f flask-dogstatsd`
 
-Make requests to the server with the followin `curl $(minikube ip):30002`
+Make requests to the server: `curl $(minikube ip):30002`
