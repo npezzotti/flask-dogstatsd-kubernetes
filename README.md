@@ -11,11 +11,10 @@
 2. From the root directory, run `docker build -t flask-dogstatsd:1.0.0 .` to build the application image
 3. Install the DatadogMetric CRD in your cluster:
 `kubectl apply -f "https://raw.githubusercontent.com/DataDog/helm-charts/master/crds/datadoghq.com_datadogmetrics.yaml"`
-2. cd kubernetes 
-3. `kubectl apply -f secrets`
-4. `kubectl apply -f agent`
-5. `kubectl apply -f cluster-agent`
-6. `kubectl apply -f external-metrics`
-7. `kubectl apply -f flask-dogstatsd`
-
-Make requests to the server: `curl $(minikube ip):30002`
+4. From the `kubernetes/` directory, run the following commands:
+ `kubectl apply -f secrets`
+ `kubectl apply -f agent`
+ `kubectl apply -f cluster-agent`
+ `kubectl apply -f external-metrics`
+ `kubectl apply -f flask-dogstatsd`
+5. Make requests to the server: `curl $(minikube ip):30002`
