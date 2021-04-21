@@ -12,9 +12,11 @@
 3. Install the DatadogMetric CRD in your cluster:
 `kubectl apply -f "https://raw.githubusercontent.com/DataDog/helm-charts/master/crds/datadoghq.com_datadogmetrics.yaml"`
 4. From the `kubernetes/` directory, run the following commands:
- `kubectl apply -f secrets`
- `kubectl apply -f agent`
- `kubectl apply -f cluster-agent`
- `kubectl apply -f external-metrics`
- `kubectl apply -f flask-dogstatsd`
+```
+ kubectl apply -f secrets
+ kubectl apply -f agent
+ kubectl apply -f cluster-agent
+ kubectl apply -f external-metrics
+ kubectl apply -f flask-dogstatsd
+```
 5. Make requests to the server: `curl $(minikube ip):30002`
