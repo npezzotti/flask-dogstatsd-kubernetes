@@ -1,11 +1,11 @@
-#Flask-Dogsatsd-Kubernetes
+# Flask-Dogsatsd-Kubernetes
 
-##Getting started
+## Getting started
 
 1. Start minikube with `minikube start --driver virtualbox`
 2. Configure your envronment to use the Docker daemon in the Minikube instance with `eval $(minikube docker-env)`
 
-##Deployment steps
+## Deployment steps
 
 1. Install the DatadogMetric CRD in your cluster:
 `kubectl apply -f "https://raw.githubusercontent.com/DataDog/helm-charts/master/crds/datadoghq.com_datadogmetrics.yaml"`
