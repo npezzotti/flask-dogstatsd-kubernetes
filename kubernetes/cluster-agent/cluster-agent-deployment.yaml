@@ -35,7 +35,7 @@ spec:
       serviceAccountName: datadog-cluster-agent
       containers:
       - name: cluster-agent
-        image: "datadog/cluster-agent:1.9.0"
+        image: "datadog/cluster-agent:1.11.0"
         imagePullPolicy: Always
         resources: {}
         ports:
