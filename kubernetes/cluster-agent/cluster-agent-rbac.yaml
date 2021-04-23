@@ -48,6 +48,8 @@ rules:
   - configmaps
   resourceNames:
   - datadogtoken # Kubernetes event collection state
+  - datadog-custom-metrics
+  - extension-apiserver-authentication
   verbs:
   - get
   - update
