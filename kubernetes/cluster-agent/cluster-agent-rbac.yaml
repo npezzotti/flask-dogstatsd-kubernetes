@@ -48,8 +48,6 @@ rules:
   - configmaps
   resourceNames:
   - datadogtoken # Kubernetes event collection state
-  - datadog-custom-metrics
-  - extension-apiserver-authentication
   verbs:
   - get
   - update
@@ -71,6 +69,24 @@ rules:
   - events
   verbs:
   - create
+- apiGroups: # to get the kube-system namespace UID and generate a cluster ID
+  - ""
+  resources:
+  - namespaces
+  resourceNames:
+  - "kube-system"
+  verbs:
+  - get
+- apiGroups: # To create the cluster-id configmap
+  - ""
+  resources:
+  - configmaps
+  resourceNames:
+  - "datadog-cluster-id"
+  verbs:
+  - create
+  - get
+  - update
 - nonResourceURLs:
   - "/version"
   - "/healthz"
