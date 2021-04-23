@@ -16,7 +16,7 @@
  kubectl apply -f secrets
  kubectl apply -f cluster-agent
  kubectl apply -f agent
- kubectl apply -f external-metrics
+ kubectl apply -f # all files in external-metrics except hpa.yaml
  kubectl apply -f flask-dogstatsd
 ```
 5. Make requests to the server: `curl $(minikube ip):30002`
