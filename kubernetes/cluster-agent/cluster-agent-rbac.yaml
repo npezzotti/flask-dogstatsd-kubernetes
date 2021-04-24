@@ -15,6 +15,7 @@ rules:
   - endpoints
   - pods
   - nodes
+  - namespaces
   - componentstatuses
   verbs:
   - get
@@ -69,6 +70,11 @@ rules:
   - events
   verbs:
   - create
+- nonResourceURLs:
+  - "/version"
+  - "/healthz"
+  verbs:
+  - get
 - apiGroups: # to get the kube-system namespace UID and generate a cluster ID
   - ""
   resources:
@@ -87,11 +93,6 @@ rules:
   - create
   - get
   - update
-- nonResourceURLs:
-  - "/version"
-  - "/healthz"
-  verbs:
-  - get
 - apiGroups:
   - admissionregistration.k8s.io
   resources:
@@ -146,7 +147,7 @@ subjects:
 apiVersion: "rbac.authorization.k8s.io/v1"
 kind: ClusterRoleBinding
 metadata:
-  name: datadog-cluster-agent:system:auth-delegator
+  name: datadog-cluster-agent-system-auth-delegator
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
