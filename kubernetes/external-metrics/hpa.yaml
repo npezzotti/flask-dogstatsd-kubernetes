@@ -13,4 +13,4 @@ spec:
   - type: External
     external:
       metricName: hello.world
-      targetAverageValue: 6
+      targetAverageValue: .2
