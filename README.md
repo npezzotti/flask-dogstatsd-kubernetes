@@ -1,5 +1,13 @@
 # Flask-Dogsatsd-Kubernetes
 
+This provides a working example of a daemonset and cluster-agent deployment monitoring a Flask apploication with the following Datadog features:
+
+- Cluster check (http_check)
+- Autodiscovery via pod annotations and config files (Nginx, Gunicorn)
+- HPA 
+- DatadogMetric CRD
+- Admission Controller
+
 ## Getting started
 
 1. Start minikube with `minikube start --driver virtualbox`
