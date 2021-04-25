@@ -13,4 +13,4 @@ spec:
   - type: External
     external:
       metricName: datadogmetric@default:flask-dogstatsd-metric
-      targetAverageValue: .2
+      targetAverageValue: 2

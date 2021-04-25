@@ -3,4 +3,4 @@ kind: DatadogMetric
 metadata:
   name: flask-dogstatsd-metric
 spec:
-  query: avg:hello.world{*}
+  query: avg:hello.world{*}.as_count()
