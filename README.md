@@ -35,3 +35,7 @@
 ## Flask Application
 1. From `kubernetes`, run `kubectl apply -f flask-dogstatsd`
 2. Make requests to the server: `curl $(minikube ip):30002`
+
+### Testing HPA
+
+Decrease the frequency of requests by editing the `sleep` duration in curl container command: `["-c", "while [ true ]; do sleep 2; curl http://127.0.0.1:80; done"]`. After reapplying the `flask-dogstatsd-deployment.yaml`, the HPA should scale the deployment to three replicas.
