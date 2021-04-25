@@ -14,8 +14,10 @@
  kubectl apply -f secrets
  kubectl apply -f agent
  kubectl apply -f cluster-agent
-
-## HPA Deployment
+ kubectl apply -f custom-metric-server.yaml
+ kubectl apply -f rbac-hpa.yaml
+```
+## HPA
 
 1. From the `kubernetes/` directory, run the following commands:
 ```
