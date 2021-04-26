@@ -30,7 +30,7 @@ This provides a working example of a daemonset and cluster-agent deployment moni
 
 1. From `kubernetes`, run the following commands:
   ```
-  kubectl apply -f hpa.yaml
+  kubectl apply -f external-metrics/hpa.yaml
   ```
 ## DatadogMetric CRD
 
@@ -38,8 +38,8 @@ This provides a working example of a daemonset and cluster-agent deployment moni
 2. In `kubernetes/cluster-agent/cluster-agent-deployment.yaml`, set `DD_EXTERNAL_METRICS_PROVIDER_USE_DATADOGMETRIC_CRD` to `"true"`
 3. From `kubernetes`, run the following commands:
   ```
-  kubectl apply -f datadog-metric.yaml 
-  kubectl apply -f datadog-metric-hpa.yaml
+  kubectl apply -f external-metrics/datadog-metric.yaml 
+  kubectl apply -f external-metrics/datadog-metric-hpa.yaml
   ```
 ## Flask Application
 1. From `kubernetes`, run `kubectl apply -f flask-dogstatsd`
