@@ -23,8 +23,8 @@ This provides a working example of a daemonset and cluster-agent deployment moni
   kubectl apply -f secrets
   kubectl apply -f agent
   kubectl apply -f cluster-agent
-  kubectl apply -f custom-metric-server.yaml
-  kubectl apply -f rbac-hpa.yaml
+  kubectl apply -f external-metrics/custom-metric-server.yaml
+  kubectl apply -f external-metrics/rbac-hpa.yaml
   ```
 ## HPA
 
