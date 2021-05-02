@@ -13,4 +13,7 @@ spec:
   - type: External
     external:
       metricName: hello.world
+      metricSelector:
+        matchLabels:
+          kube_service: flask-dogstatsd-service
       targetAverageValue: .2
