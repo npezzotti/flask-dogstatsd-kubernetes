@@ -20,16 +20,6 @@ spec:
         ad.datadoghq.com/nginx.check_names: '["nginx"]'
         ad.datadoghq.com/nginx.init_configs: '[{}]'
         ad.datadoghq.com/nginx.instances: '[{"nginx_status_url": "http://%%host%%:81/nginx_status/"}]'
-        ad.datadoghq.com/flask-dogstatsd.check_names: '["process"]'
-        ad.datadoghq.com/flask-dogstatsd.init_configs: '[{}]'
-        ad.datadoghq.com/flask-dogstatsd.instances: |
-          [
-            {
-              "name": "flask",
-              "search_string": ["/usr/local/bin/python", "/usr/local/bin/flask", "run"],
-              "exact_match": "false"
-            }
-          ]
         ad.datadoghq.com/flask-dogstatsd.logs: '[{"source": "python", "service": "flask-dogstatsd"}]'
     spec:
       containers:
@@ -57,7 +47,7 @@ spec:
         image: curlimages/curl
         imagePullPolicy: Always
         command: ["/bin/sh"]
-        args: ["-c", "while [ true ]; do sleep 5; curl http://127.0.0.1:80; done"]
+        args: ["-c", "while [ true ]; do sleep 2; curl http://127.0.0.1:80; done"]
       volumes:
         - name: nginx-config
           configMap:
