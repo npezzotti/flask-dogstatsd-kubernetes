@@ -1,0 +1,49 @@
+targetSystem: "linux"
+registry: gcr.io/datadoghq
+datadog:
+  kubeStateMetricsEnabled: false
+  kubeStateMetricsCore:
+    enabled: true
+    ignoreLegacyKSMCheck: true
+  clusterChecks:
+    enabled: true
+  kubelet:
+    tlsVerify: false
+  dogstatsd:
+    port: 8125
+    originDetection: true
+    useHostPort: true
+    nonLocalTraffic: true
+  logs:
+    enabled: true
+    containerCollectAll: false
+    containerCollectUsingFiles: true
+  apm:
+    portEnabled: true
+    enabled: true
+  confd:
+    gunicorn.yaml.yaml: |-
+      ad_identifiers:
+        - flask-dogstatsd
+      init_config:
+      instances:
+        - proc_name: run:app
+  orchestratorExplorer:
+    enabled: true
+    container_scrubbing:
+      enabled: true
+  networkMonitoring:
+    enabled: true
+  containerExclude:  "image:datadog/agent"
+clusterAgent:
+  enabled: true
+  metricsProvider:
+    enabled: true
+    useDatadogMetrics: true
+    aggregator: avg
+    service:
+      type: ClusterIP
+      port: 8443
+  admissionController:
+    enabled: true
+    mutateUnlabelled: false
